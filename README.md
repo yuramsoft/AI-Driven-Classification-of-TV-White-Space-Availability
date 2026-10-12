@@ -100,31 +100,6 @@ The example uncertainty argument is a placeholder interface. Do not substitute a
 
 
 ## 10. Run locally
-
-```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-python src/train.py --csv data/processed/features.csv
-uvicorn src.api:app --reload
-```
-
-Example request body (use feature values from your dataset and a validated uncertainty estimate):
-
-```json
-{
-  "frequency_mhz": 587.0,
-  "tx_distance_km": 24.5,
-  "tx_height_m": 125.0,
-  "rx_height_m": 10.0,
-  "terrain_loss_db": 18.0,
-  "landcover_urban_fraction": 0.35,
-  "landcover_forest_fraction": 0.2,
-  "uncertainty_db": 4.0,
-  "regulator_allows": true
-}
-```
-
 ## Quick start
 
 ```bash
@@ -147,6 +122,21 @@ uvicorn src.api:app --reload
 
 Open `http://127.0.0.1:8000/docs` for the interactive API documentation. Synthetic rows are for software testing only and must not be reported as measured radio evidence.
 
+Example request body (use feature values from your dataset and a validated uncertainty estimate):
+
+```json
+{
+  "frequency_mhz": 587.0,
+  "tx_distance_km": 24.5,
+  "tx_height_m": 125.0,
+  "rx_height_m": 10.0,
+  "terrain_loss_db": 18.0,
+  "landcover_urban_fraction": 0.35,
+  "landcover_forest_fraction": 0.2,
+  "uncertainty_db": 4.0,
+  "regulator_allows": true
+}
+```
 ## 11. Recommended next implementation milestones
 
 1. Choose jurisdiction, study area, channels, and authoritative regulatory source.
@@ -156,4 +146,25 @@ Open `http://127.0.0.1:8000/docs` for the interactive API documentation. Synthet
 5. Add calibrated uncertainty and policy review; test conservative edge cases.
 6. Deploy behind authentication with monitoring, audit logs, and human review.
 
+-
 
+## Author
+
+**Ibrahim Mustapha, PhD**
+
+Department of Electrical & Electronic Engineering
+University of Maiduguri
+Communications Engineering / Wireless Communications
+Python & Machine Learning
+
+---
+
+## License
+
+This project is released under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## Disclaimer
+
+This project is primarily an educational and research-oriented implementation. Predictions produced by the initial model should not be treated as a substitute for detailed radio-frequency planning, field measurements, or validated commercial propagation models.
